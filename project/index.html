@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>업무 일정 & 메모 관리</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Font Awesome 아이콘 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+<header class="site-header">
+    <h1>📅 업무 일정 & 메모 관리</h1>
+    <p class="subtitle">OJT 텀프로젝트 - 최신 자바스크립트 실무</p>
+</header>
+
+<div class="container">
+
+    <!-- 검색 툴바 -->
+    <div class="toolbar">
+        <input type="text" id="search" placeholder="업무 검색...">
+        <button id="add-task" class="btn primary">할 일 추가</button>
+    </div>
+
+    <!-- 업무 추가 폼 -->
+    <form id="task-form" style="display:none; margin-top: 16px;">
+        <div class="input-icon">
+            <i class="fas fa-tasks"></i>
+            <input type="text" id="task-title" placeholder="업무 제목" required />
+        </div>
+        <div class="input-icon">
+            <i class="fas fa-calendar-alt"></i>
+            <input type="date" id="task-date" required />
+        </div>
+        <div class="input-icon" style="flex:2;">
+            <i class="fas fa-sticky-note"></i>
+            <textarea id="task-desc" placeholder="메모 내용" required></textarea>
+        </div>
+        <button type="submit"><i class="fas fa-plus"></i> 저장</button>
+    </form>
+
+    <!-- 업무 목록 -->
+    <div id="task-list" class="grid"></div>
+
+</div>
+
+<footer class="site-footer">
+    © 2025 업무 일정 & 메모 관리. All rights reserved.
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>
