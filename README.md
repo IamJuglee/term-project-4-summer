@@ -17,18 +17,7 @@ ES6+ 최신 문법과 객체지향, 함수형 프로그래밍, 비동기 처리,
 - **버전관리**: Git, GitHub  
 - **개발환경**: IntelliJ IDEA  
 
-## 📂 프로젝트 구조
-term-project-4-summer/
-│
-├── practice/      # 1\~14회차 실습 및 과제 코드
-├── project/       # 텀프로젝트 코드
-├── assets/        # 이미지, CSS 등 정적 리소스
-├── README.md      # 프로젝트 개요 문서
-└── package.json   # 프로젝트 설정 파일(필요 시)
-
 ## 🚀 실행 방법
 1. 레포지토리 클론
-git clone [https://github.com/your-username/term-project-4-summer.git](https://github.com/your-username/term-project-4-summer.git)
-cd term-project-4-summer
 2. IntelliJ IDEA에서 프로젝트 열기  
 3. 내장 웹서버 또는 Live Server 플러그인을 이용하여 `index.html` 실행
