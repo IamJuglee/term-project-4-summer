@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>6회차 과제 - 이메일 또는 전화번호 정규 표현식을 구현하고, 입력값 검증 처리 과제를 평가한다.</title>
+</head>
+<body>
+<script>
+    // 이메일 정규표현식 (test@example.com 형식 기준)
+    const emailRegex = /^[\w.-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+    // 전화번호 정규표현식 (010-1234-5678 형식 기준)
+    const phoneRegex = /^01[0|1|6-9]-\d{3,4}-\d{4}$/;
+
+    const input = prompt("이메일 또는 전화번호를 입력해주세요:");
+
+    if (emailRegex.test(input)) {
+        alert("유효한 이메일 형식입니다.");
+    } else if (phoneRegex.test(input)) {
+        alert("유효한 전화번호 형식입니다.");
+    } else {
+        alert("올바른 이메일 또는 전화번호 형식이 아닙니다.");
+    }
+</script>
+</body>
+</html>

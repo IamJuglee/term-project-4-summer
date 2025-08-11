@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>3회차 과제 - 사용자 목록 배열을 클로저 기반 필터링 기능으로 가공하는 실습 코드</title>
+</head>
+<body>
+<script>
+    // 사용자 목록 배열
+    const users = [
+        { name: "정근", age: 22 },
+        { name: "민수", age: 17 },
+        { name: "지은", age: 30 },
+        { name: "하늘", age: 15 }
+    ];
+
+    // 클로저 기반 필터 함수 생성기
+    function createAgeFilter(minAge) {
+        return function(user) {
+            return user.age >= minAge;
+        };
+    }
+
+    // 필터 함수 생성 (20세 이상만 필터링)
+    const isAdult = createAgeFilter(20);
+
+    // 사용자 목록 필터링
+    const adultUsers = users.filter(isAdult);
+
+    // 결과 출력
+    console.log("성인 사용자 목록:");
+    adultUsers.forEach(user => {
+        console.log(`- ${user.name} (${user.age}세)`);
+    });
+</script>
+</body>
+</html>

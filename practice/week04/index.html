@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>4회차 과제 - 도서 또는 사용자 객체를 클래스 기반으로 설계하고 상속 구조 구현</title>
+</head>
+<body>
+<script>
+    // 사용자 클래스 정의
+    class User {
+        constructor(name, email) {
+            this.name = name;
+            this.email = email;
+        }
+
+        introduce() {
+            console.log(`안녕하세요, 저는 ${this.name}입니다. 이메일은 ${this.email}입니다.`);
+        }
+    }
+
+    // 관리자 클래스 - User를 상속
+    class Admin extends User {
+        constructor(name, email, role) {
+            super(name, email); // 부모 생성자 호출
+            this.role = role;
+        }
+
+        // introduce 메서드 오버라이딩
+        introduce() {
+            super.introduce(); // 부모 메서드 호출
+            console.log(`관리자 역할: ${this.role}`);
+        }
+    }
+
+    // 테스트 실행
+    const user1 = new User("이정근", "jeonggeun@example.com");
+    const admin1 = new Admin("이정근 관리자", "admin@example.com", "시스템 운영자");
+
+    console.log("일반 사용자 소개:");
+    user1.introduce();
+
+    console.log("관리자 소개:");
+    admin1.introduce();
+</script>
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>8회차 과제 - 사용자의 언어 환경에 맞춰 날짜 및 통화 표기를 자동 적용하는 프로그램 작성</title>
+</head>
+<body>
+<h3 id="title">언어/지역 선택</h3>
+<select id="localeSelect">
+    <option value="ko-KR">한국어 (ko-KR)</option>
+    <option value="en-US">English (en-US)</option>
+    <option value="ja-JP">日本語 (ja-JP)</option>
+</select>
+
+<button onclick="showFormatted()">결과 보기</button>
+
+<pre id="output"></pre>
+
+<script>
+    const translations = {
+        "ko-KR": {
+            title: "언어/지역 선택",
+            label_locale: "선택한 로케일",
+            label_date: "현재 날짜와 시간",
+            label_currency: "변환된 통화 금액"
+        },
+        "en-US": {
+            title: "Select Language/Region",
+            label_locale: "Selected Locale",
+            label_date: "Current Date & Time",
+            label_currency: "Converted Currency Amount"
+        },
+        "ja-JP": {
+            title: "言語と地域を選択",
+            label_locale: "選択したロケール",
+            label_date: "現在の日時",
+            label_currency: "変換された通貨額"
+        }
+    };
+
+    // 로케일별 통화 매핑 및 고정 환율 선언
+    const currencyInfo = {
+        "ko-KR": { code: "KRW", rate: 1 },        // 원화 기준
+        "en-US": { code: "USD", rate: 0.00089 },  // 예: 1 KRW = 0.00089 USD
+        "ja-JP": { code: "JPY", rate: 0.11 }      // 예: 1 KRW = 0.11 JPY
+    };
+
+    function showFormatted() {
+        const selectedLocale = document.getElementById("localeSelect").value;
+        const dict = translations[selectedLocale];
+        const { code: currencyCode, rate: fxRate } = currencyInfo[selectedLocale];
+
+        document.getElementById("title").textContent = dict.title;
+
+        const now = new Date();
+        const basePriceKRW = 1234567.89;
+        const convertedPrice = basePriceKRW * fxRate;
+
+        const dateFormatter = new Intl.DateTimeFormat(selectedLocale, {
+            dateStyle: 'full',
+            timeStyle: 'short'
+        });
+
+        const currencyFormatter = new Intl.NumberFormat(selectedLocale, {
+            style: 'currency',
+            currency: currencyCode
+        });
+
+        const output = `
+${dict.label_locale}: ${selectedLocale}
+${dict.label_date}: ${dateFormatter.format(now)}
+${dict.label_currency}: ${currencyFormatter.format(convertedPrice)}
+      `.trim();
+
+        document.getElementById("output").textContent = output;
+    }
+
+    // 페이지 로드 시 기본값 설정
+    window.addEventListener('DOMContentLoaded', () => {
+        const defaultLocale = navigator.language;
+        const supported = Object.keys(currencyInfo);
+        const matched = supported.includes(defaultLocale) ? defaultLocale : "ko-KR";
+        document.getElementById("localeSelect").value = matched;
+        showFormatted();
+    });
+</script>
+</body>
+</html>

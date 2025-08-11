@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>5회차 과제 - 사용자 생년월일 기준 나이 계산기 구현</title>
+</head>
+<body>
+<script>
+    // 사용자로부터 생년월일 입력 받기 (형식: YYYY-MM-DD)
+    const birthInput = prompt("당신의 생년월일을 입력해주세요 (예: 2000-05-27):");
+
+    // 입력값을 Date 객체로 변환
+    const birthDate = new Date(birthInput);
+    const today = new Date();
+
+    // 유효성 검사
+    if (isNaN(birthDate)) {
+        alert("올바른 날짜 형식(YYYY-MM-DD)으로 입력해주세요.");
+    } else {
+        // 올해 기준 나이 계산
+        let age = today.getFullYear() - birthDate.getFullYear();
+
+        // 생일이 아직 지나지 않았다면 1살 차감
+        const isBeforeBirthday =
+            today.getMonth() < birthDate.getMonth() ||
+            (today.getMonth() === birthDate.getMonth() && today.getDate() < birthDate.getDate());
+
+        if (isBeforeBirthday) {
+            age -= 1;
+        }
+
+        alert(`당신의 만 나이는 ${age}살입니다.`);
+    }
+</script>
+</body>
+</html>

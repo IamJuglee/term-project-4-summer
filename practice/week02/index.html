@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>2회차 과제 - 사용자 입력을 받아 조건별 분기 후 결과를 출력하는 프로그램 구현</title>
+</head>
+<body>
+<script>
+    // 사용자 입력 받기
+    const input = prompt("당신의 나이를 입력해주세요:");
+
+    // 입력값을 숫자로 변환
+    const age = Number(input);
+
+    // 조건 분기 처리
+    if (isNaN(age)) {
+        alert("유효한 숫자를 입력해주세요.");
+    } else if (age < 13) {
+        alert("당신은 어린이입니다.");
+    } else if (age < 20) {
+        alert("당신은 청소년입니다.");
+    } else if (age < 65) {
+        alert("당신은 성인입니다.");
+    } else {
+        alert("당신은 노인입니다.");
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>1회차 과제 - 개인 정보를 포함한 JSON 객체를 정의하고, 비구조화 할당과 템플릿 리터럴을 활용하여 자기소개 메시지를 출력하는 콘솔 프로그램 구현</title>
+</head>
+<body>
+<script>
+    // 개인 정보를 포함한 JSON 객체
+    const person = {
+        name: "이정근",
+        age: 22,
+        major: "컴퓨터전자공학과",
+        school: "한국공학대학교",
+        isStudent: true,
+    };
+
+    // 비구조화 할당
+    const { name, age, major, school, isStudent } = person;
+
+    // 템플릿 리터럴을 활용한 자기소개 메시지 출력
+    console.log(`
+안녕하세요! 제 이름은 ${name}입니다.
+올해 ${age}살이며, ${school}의 ${major}에 재학 중입니다.
+현재 상태는 ${isStudent ? "대학생입니다." : "졸업생입니다."}
+감사합니다!
+`);
+
+</script>
+</body>
+</html>

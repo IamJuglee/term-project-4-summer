@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>13회차 과제 - 피보나치 수열을 제너레이터 함수로 구현하는 반복기 작성</title>
+</head>
+<body>
+<script>
+    // 피보나치 수열 제너레이터 함수
+    function* fibonacci(limit) {
+        let a = 0, b = 1;
+        let count = 0;
+
+        while (count < limit) {
+            yield a; // 현재 값 반환
+            [a, b] = [b, a + b]; // 다음 값 계산
+            count++;
+        }
+    }
+
+    // 10개의 피보나치 수열 생성
+    const fib = fibonacci(10);
+
+    console.log("피보나치 수열 (10개):");
+    for (let num of fib) {
+        console.log(num);
+    }
+</script>
+</body>
+</html>

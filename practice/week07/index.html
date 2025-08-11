@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>7회차 과제 - 사용자 주문 내역 데이터를 기반으로 통계 및 요약 데이터를 추출하는 프로그램 작성</title>
+</head>
+<body>
+<script>
+    // 사용자 주문 내역 데이터
+    const orders = [
+        { user: "이정근", item: "키보드", amount: 55000 },
+        { user: "김지은", item: "마우스", amount: 32000 },
+        { user: "이정근", item: "모니터", amount: 175000 },
+        { user: "박민수", item: "USB", amount: 12000 },
+        { user: "김지은", item: "헤드셋", amount: 47000 },
+        { user: "이정근", item: "노트북 거치대", amount: 29000 },
+    ];
+
+    // 총 주문 건수
+    const totalOrders = orders.length;
+
+    // 총 주문 금액
+    const totalAmount = orders.reduce((sum, order) => sum + order.amount, 0);
+
+    // 사용자별 주문 금액 합계
+    const amountByUser = {};
+    orders.forEach(order => {
+        if (!amountByUser[order.user]) {
+            amountByUser[order.user] = 0;
+        }
+        amountByUser[order.user] += order.amount;
+    });
+
+    // 결과 출력
+    console.log("주문 통계 요약");
+    console.log(`총 주문 건수: ${totalOrders}건`);
+    console.log(`총 결제 금액: ${totalAmount.toLocaleString()}원`);
+
+    console.log("사용자별 주문 금액 합계:");
+    for (let user in amountByUser) {
+        console.log(`- ${user}: ${amountByUser[user].toLocaleString()}원`);
+    }
+</script>
+</body>
+</html>
