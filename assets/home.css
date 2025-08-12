@@ -44,26 +44,13 @@ html, body {
 
 .toolbar {
     display: flex;
-    gap: 12px;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-end; /* 검색 삭제 후 우측 정렬 */
     background: var(--panel);
     padding: 14px;
     border-radius: var(--radius);
     box-shadow: 0 8px 24px rgba(0,0,0,0.25);
 }
-
-#search {
-    flex: 1;
-    padding: 12px 14px;
-    border-radius: 10px;
-    border: 1px solid #2a3142;
-    background: #0f1320;
-    color: var(--text);
-    outline: none;
-}
-
-#search::placeholder { color: #6b7380; }
 
 .links { display: flex; gap: 8px; }
 

@@ -1,4 +1,4 @@
-// 홈 그리드에 1~14주차 카드 생성 + 검색 필터
+// 홈 그리드: 1~14주차 + 15주차(텀프로젝트)
 const weeks = [
     { no: 1,  title: "값과 변수" },
     { no: 2,  title: "제어 구조" },
@@ -14,10 +14,10 @@ const weeks = [
     { no: 12, title: "메타프로그래밍 (Proxy/Reflect/Symbol)" },
     { no: 13, title: "반복자와 제너레이터" },
     { no: 14, title: "타입스크립트 소개" },
+    { no: 15, title: "텀프로젝트" },
 ];
 
 const grid = document.getElementById("weekGrid");
-const searchInput = document.getElementById("search");
 
 function pad2(n) {
     return n.toString().padStart(2, "0");
@@ -26,15 +26,18 @@ function pad2(n) {
 function makeCard({ no, title }) {
     const a = document.createElement("a");
     a.className = "card";
-    a.href = `./practice/week${pad2(no)}/index.html`;
+    const href =
+        no === 15
+            ? "./project/index.html"
+            : `./practice/week${pad2(no)}/index.html`;
+    a.href = href;
     a.setAttribute("data-title", `${no}주차 ${title}`);
     a.innerHTML = `
     <div class="card-badge">${no}주차</div>
     <div class="card-title">${title}</div>
-    <div class="card-desc">예제/과제 코드 보기</div>
+    <div class="card-desc">${no === 15 ? "프로젝트 페이지 열기" : "예제/과제 코드 보기"}</div>
   `;
     a.addEventListener("keydown", (e) => {
-        // 접근성: Enter/Space로도 열기
         if (e.key === " " || e.key === "Enter") {
             e.preventDefault();
             a.click();
@@ -48,18 +51,6 @@ function render(list) {
     grid.innerHTML = "";
     list.forEach((w) => grid.appendChild(makeCard(w)));
 }
-
-function filterWeeks(keyword) {
-    const q = keyword.trim().toLowerCase();
-    if (!q) return weeks;
-    return weeks.filter((w) =>
-        `${w.no} ${w.title}`.toLowerCase().includes(q)
-    );
-}
-
-searchInput.addEventListener("input", (e) => {
-    render(filterWeeks(e.target.value));
-});
 
 // 초기 렌더
 render(weeks);

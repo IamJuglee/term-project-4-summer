@@ -1,53 +1,78 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>업무 일정 & 메모 관리</title>
-    <link rel="stylesheet" href="style.css">
-    <!-- Font Awesome 아이콘 -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css" />
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
 </head>
 <body>
 <header class="site-header">
-    <h1>📅 업무 일정 & 메모 관리</h1>
-    <p class="subtitle">OJT 텀프로젝트 - 최신 자바스크립트 실무</p>
+    <h1>업무 일정 & 메모 관리</h1>
+    <p class="subtitle">메모 입력 → 일자별 공수 통계</p>
 </header>
 
 <div class="container">
 
-    <!-- 검색 툴바 -->
-    <div class="toolbar">
-        <input type="text" id="search" placeholder="업무 검색...">
-        <button id="add-task" class="btn primary">할 일 추가</button>
+    <!-- 상단 툴바: 홈으로 + 통계 버튼 + 정렬 -->
+    <div class="toolbar toolbar--row">
+        <div class="toolbar-left" style="display:flex; gap:8px;">
+            <!-- ✅ 홈으로 버튼 추가 -->
+            <a class="btn" href="../index.html">
+                <i class="fa-solid fa-house"></i><span>홈으로</span>
+            </a>
+
+            <a class="btn primary btn-stats" href="./stats.html">
+                <i class="fa-solid fa-chart-line"></i><span>통계 보기</span>
+            </a>
+        </div>
+
+        <div class="toolbar-right sort-controls">
+            <label>
+                정렬:
+                <select id="sort-key" aria-label="정렬 기준">
+                    <option value="date">날짜</option>
+                    <option value="memo">메모</option>
+                    <option value="hours">공수</option>
+                </select>
+            </label>
+            <label>
+                방향:
+                <select id="sort-dir" aria-label="정렬 방향">
+                    <option value="desc">내림차순</option>
+                    <option value="asc">오름차순</option>
+                </select>
+            </label>
+        </div>
     </div>
 
-    <!-- 업무 추가 폼 -->
-    <form id="task-form" style="display:none; margin-top: 16px;">
-        <div class="input-icon">
-            <i class="fas fa-tasks"></i>
-            <input type="text" id="task-title" placeholder="업무 제목" required />
+    <!-- 입력: 메모 + 공수 (항상 표시, 한 줄형). 폼 제출 X, 버튼 클릭만 처리 -->
+    <form id="task-form" class="entry-form" autocomplete="off" onsubmit="return false;">
+        <div class="entry-input memo">
+            <i class="fa-regular fa-message"></i>
+            <input id="task-desc" type="text" placeholder="메모 내용을 입력하세요 (예: '엔진 최적화 아이디어 기록')" />
         </div>
-        <div class="input-icon">
-            <i class="fas fa-calendar-alt"></i>
-            <input type="date" id="task-date" required />
+        <div class="entry-input hours">
+            <i class="fa-solid fa-hourglass-half"></i>
+            <input id="task-hours" type="text" inputmode="decimal" placeholder="공수 (예: 1, 0.75, 1h)" />
         </div>
-        <div class="input-icon" style="flex:2;">
-            <i class="fas fa-sticky-note"></i>
-            <textarea id="task-desc" placeholder="메모 내용" required></textarea>
-        </div>
-        <button type="submit"><i class="fas fa-plus"></i> 저장</button>
+        <button id="btn-add" type="button" class="btn primary btn-add">
+            <i class="fa-solid fa-plus"></i><span>등록</span>
+        </button>
     </form>
 
-    <!-- 업무 목록 -->
-    <div id="task-list" class="grid"></div>
+    <!-- 목록: 한 줄형 To-Do 리스트 -->
+    <div id="task-list" class="list"></div>
 
 </div>
 
 <footer class="site-footer">
-    © 2025 업무 일정 & 메모 관리. All rights reserved.
+    <small>© 2025년 여름학기 OJT – 고급 자바스크립트 프로그래밍 실무</small>
 </footer>
 
-<script src="app.js"></script>
+<!-- ES Module 진입점 -->
+<script type="module" src="./app.js"></script>
 </body>
 </html>
