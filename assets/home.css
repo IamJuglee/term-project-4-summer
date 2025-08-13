@@ -1,24 +1,27 @@
 :root {
-    --bg: #0f1115;
-    --panel: #151923;
-    --text: #e6e9ef;
-    --muted: #9aa3b2;
-    --accent: #5b8cff;
-    --accent-2: #7bd389;
-    --radius: 14px;
+    /* 색상, 폰트 반경 등 전역에서 사용하는 CSS 변수 정의 */
+    --bg: #0f1115;        /* 배경 색상 */
+    --panel: #151923;     /* 패널(박스) 배경색 */
+    --text: #e6e9ef;      /* 기본 글자색 */
+    --muted: #9aa3b2;     /* 보조 텍스트 색 */
+    --accent: #5b8cff;    /* 강조 색상 1 */
+    --accent-2: #7bd389;  /* 강조 색상 2 (그라디언트용) */
+    --radius: 14px;       /* 둥근 모서리 기본 값 */
 }
 
-* { box-sizing: border-box; }
+* { box-sizing: border-box; } /* 모든 요소의 박스 크기 계산 방식을 border-box로 설정 */
 
 html, body {
     margin: 0;
     padding: 0;
     background: var(--bg);
     color: var(--text);
+    /* 한글과 영문 모두 가독성 좋은 기본 글꼴 설정 */
     font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue",
     "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", Arial, "맑은 고딕", sans-serif;
 }
 
+/* 헤더 영역 */
 .site-header {
     padding: 36px 20px 8px;
     text-align: center;
@@ -36,23 +39,25 @@ html, body {
     font-size: 14px;
 }
 
+/* 메인 컨테이너 영역 (내용 폭 제한 및 가운데 정렬) */
 .container {
     max-width: 1080px;
     margin: 0 auto;
     padding: 16px 20px 40px;
 }
 
+/* 상단 버튼/툴바 스타일 */
 .toolbar {
     display: flex;
     align-items: center;
-    justify-content: flex-end; /* 검색 삭제 후 우측 정렬 */
+    justify-content: flex-end;
     background: var(--panel);
     padding: 14px;
     border-radius: var(--radius);
     box-shadow: 0 8px 24px rgba(0,0,0,0.25);
 }
 
-.links { display: flex; gap: 8px; }
+.links { display: flex; gap: 8px; } /* 버튼 간 간격 */
 
 .btn {
     display: inline-block;
@@ -65,6 +70,7 @@ html, body {
     font-size: 14px;
 }
 
+/* 주요 버튼 (primary) 스타일 - 그라디언트 적용 */
 .btn.primary {
     background: linear-gradient(135deg, var(--accent), var(--accent-2));
     color: #0e1116;
@@ -72,6 +78,7 @@ html, body {
     font-weight: 700;
 }
 
+/* 주차 카드가 들어갈 그리드 레이아웃 */
 .grid {
     margin-top: 16px;
     display: grid;
@@ -79,6 +86,7 @@ html, body {
     gap: 14px;
 }
 
+/* 주차별 카드 스타일 */
 .card {
     display: block;
     background: var(--panel);
@@ -92,34 +100,39 @@ html, body {
     outline: none;
 }
 
+/* 카드 호버/포커스 시 시각 효과 */
 .card:hover, .card:focus {
     transform: translateY(-2px);
     box-shadow: 0 12px 28px rgba(0,0,0,0.35);
     border-color: #3a4463;
 }
 
+/* 카드의 주차 표시 배지 */
 .card-badge {
     display: inline-block;
     font-size: 12px;
     color: #0e1116;
     background: var(--accent);
     padding: 4px 8px;
-    border-radius: 999px;
+    border-radius: 999px; /* 완전 둥근 모서리 */
     font-weight: 700;
 }
 
+/* 카드 제목 */
 .card-title {
     margin-top: 10px;
     font-size: 18px;
     font-weight: 700;
 }
 
+/* 카드 설명 */
 .card-desc {
     margin-top: 6px;
     font-size: 13px;
     color: var(--muted);
 }
 
+/* 푸터 영역 */
 .site-footer {
     text-align: center;
     color: var(--muted);

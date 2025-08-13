@@ -2,33 +2,40 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8" />
+    <!-- 반응형 레이아웃을 위한 기본 뷰포트 설정 -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>업무 일정 & 메모 관리</title>
+
+    <!-- 페이지 공통 스타일 -->
     <link rel="stylesheet" href="style.css" />
-    <!-- Font Awesome -->
+
+    <!-- 아이콘 폰트(Font Awesome). 툴바/버튼의 아이콘에 사용 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
 </head>
 <body>
 <header class="site-header">
+    <!-- 페이지 타이틀과 부제 -->
     <h1>업무 일정 & 메모 관리</h1>
     <p class="subtitle">메모 입력 → 일자별 공수 통계</p>
 </header>
 
 <div class="container">
 
-    <!-- 상단 툴바: 홈으로 + 통계 버튼 + 정렬 -->
+    <!-- 상단 툴바: 좌측(홈/통계), 우측(정렬 제어) -->
     <div class="toolbar toolbar--row">
         <div class="toolbar-left" style="display:flex; gap:8px;">
-            <!-- ✅ 홈으로 버튼 추가 -->
+            <!-- 홈으로 이동 버튼: 루트의 홈(index.html)로 이동 -->
             <a class="btn" href="../index.html">
                 <i class="fa-solid fa-house"></i><span>홈으로</span>
             </a>
 
+            <!-- 통계 화면으로 이동 -->
             <a class="btn primary btn-stats" href="./stats.html">
                 <i class="fa-solid fa-chart-line"></i><span>통계 보기</span>
             </a>
         </div>
 
+        <!-- 목록 정렬 컨트롤: 기준/방향을 선택하면 JS가 다시 렌더링 -->
         <div class="toolbar-right sort-controls">
             <label>
                 정렬:
@@ -48,7 +55,7 @@
         </div>
     </div>
 
-    <!-- 입력: 메모 + 공수 (항상 표시, 한 줄형). 폼 제출 X, 버튼 클릭만 처리 -->
+    <!-- 입력 폼: 메모/공수 한 줄 입력. HTML 폼 제출은 막고 버튼 클릭만 처리 -->
     <form id="task-form" class="entry-form" autocomplete="off" onsubmit="return false;">
         <div class="entry-input memo">
             <i class="fa-regular fa-message"></i>
@@ -58,12 +65,13 @@
             <i class="fa-solid fa-hourglass-half"></i>
             <input id="task-hours" type="text" inputmode="decimal" placeholder="공수 (예: 1, 0.75, 1h)" />
         </div>
+        <!-- 클릭 시 JS에서 검증/추가/저장/렌더 순으로 처리 -->
         <button id="btn-add" type="button" class="btn primary btn-add">
             <i class="fa-solid fa-plus"></i><span>등록</span>
         </button>
     </form>
 
-    <!-- 목록: 한 줄형 To-Do 리스트 -->
+    <!-- 업무 목록 출력 영역: JS가 동적으로 .row 아이템을 추가 -->
     <div id="task-list" class="list"></div>
 
 </div>
@@ -72,7 +80,7 @@
     <small>© 2025년 여름학기 OJT – 고급 자바스크립트 프로그래밍 실무</small>
 </footer>
 
-<!-- ES Module 진입점 -->
+<!-- 엔트리 스크립트(ES Module). 내부에서 서비스/리포를 import 하여 초기화/렌더링 -->
 <script type="module" src="./app.js"></script>
 </body>
 </html>

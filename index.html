@@ -4,21 +4,26 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>OJT Term Project – 홈</title>
+    <!-- 홈 화면 스타일 불러오기 -->
     <link rel="stylesheet" href="./assets/home.css" />
 </head>
 <body>
 <header class="site-header">
+    <!-- 페이지 제목 -->
     <h1>OJT Term Project – 홈</h1>
     <p class="subtitle">1~14주차 실습 및 텀프로젝트(15주차)로 이동하세요.</p>
 </header>
 
 <main class="container">
+    <!-- 상단 툴바 (텀프로젝트 바로가기 버튼 포함) -->
     <section class="toolbar">
         <div class="links">
+            <!-- 15주차 텀프로젝트 페이지로 이동 -->
             <a class="btn primary" href="./project/index.html">텀프로젝트 바로가기</a>
         </div>
     </section>
 
+    <!-- 주차별 카드가 동적으로 추가될 영역 -->
     <section id="weekGrid" class="grid" aria-live="polite"></section>
 </main>
 
@@ -26,6 +31,7 @@
     <small>© 2025년 여름학기 OJT – 고급 자바스크립트 프로그래밍 실무</small>
 </footer>
 
+<!-- 홈 화면 동작 스크립트 불러오기 -->
 <script type="module" src="./home.js"></script>
 </body>
 </html>

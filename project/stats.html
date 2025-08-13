@@ -2,21 +2,30 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8"/>
+    <!-- 모바일 뷰포트를 위한 기본 설정 -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>통계 – 일자별 공수 합계</title>
+
+    <!-- 리스트 화면과 동일한 스타일 사용 -->
     <link rel="stylesheet" href="style.css"/>
+
+    <!-- 아이콘 폰트(Font Awesome). 툴바/버튼의 아이콘에 사용 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
 </head>
 <body>
 <header class="site-header">
+    <!-- 통계 화면 타이틀/부제 -->
     <h1>통계 – 일자별 공수 합계</h1>
     <p class="subtitle">일자 기준으로 집계합니다</p>
 </header>
 
 <div class="container">
+    <!-- 상단 네비게이션: 목록 화면으로 복귀 -->
     <div class="toolbar toolbar--row">
         <a class="btn" href="./index.html"><i class="fa-solid fa-list-check"></i> 목록으로</a>
     </div>
 
+    <!-- 통계 테이블이 동적으로 들어갈 영역 -->
     <div id="stats-area" class="list" style="margin-top:16px"></div>
 </div>
 
@@ -24,6 +33,7 @@
     <small>© 2025년 여름학기 OJT – 고급 자바스크립트 프로그래밍 실무</small>
 </footer>
 
+<!-- 통계 화면 엔트리(ES Module). 내부에서 Repo를 통해 데이터 로드/집계/렌더 -->
 <script type="module" src="stats.js"></script>
 </body>
 </html>
